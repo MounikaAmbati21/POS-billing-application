@@ -3,7 +3,7 @@ import swal from 'sweetalert'
 
 export const startRegisterUser = (userData)=>{
     return (dispatch)=>{
-        axios.post('http://dct-billing-app.herokuapp.com/api/users/register',userData)
+        axios.post('https://dct-billing-app.herokuapp.com/api/users/register',userData)
             .then((response)=>{
                 //console.log(response.data)
                 if(response.data.hasOwnProperty('errors')){
@@ -28,7 +28,7 @@ export const setRegisterUser=(data)=>{
 
 export const startLoginUser = (userData)=>{
     return (dispatch)=>{
-        axios.post('http://dct-billing-app.herokuapp.com/api/users/login',userData)
+        axios.post('https://dct-billing-app.herokuapp.com/api/users/login',userData)
             .then((response)=>{
                 //console.log(response.data)
                 if(response.data.hasOwnProperty('errors')){
@@ -53,7 +53,7 @@ export const setLoginUser=(data)=>{
 
 export const startGetUserDetails = ()=>{
     return (dispatch)=>{
-        axios.get('http://dct-billing-app.herokuapp.com/api/users/account',{
+        axios.get('https://dct-billing-app.herokuapp.com/api/users/account',{
             headers : {
                 'Authorization' : `Bearer ${localStorage.getItem('token')}`
             }
