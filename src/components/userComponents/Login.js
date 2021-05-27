@@ -27,10 +27,10 @@ const Login = (props)=>{
 
 
     const validate = Yup.object({
-        email: Yup.string().email('Invalid email').required('email required'),
+        email: Yup.string().email('Invalid email').required('* email required'),
         password : Yup.string()
         .min(6,'password should minimum 6 characters')
-        .required('password required')
+        .required('* password required')
     })
 
     const handleSubmit = (values,onSubmitProps)=>{
@@ -57,7 +57,7 @@ const Login = (props)=>{
                                        onChange={formik.handleChange}
                                        onBlur={formik.handleBlur}
                                        placeholder="email" className="form-control form-control-sm mt-4"/> 
-                                       {formik.errors.email && formik.touched.email && <span>{formik.errors.email}</span>}
+                                       {formik.errors.email && formik.touched.email && <span style={{color:"red"}}>{formik.errors.email}</span>}
                                        <br/>
                                 <Field type="password"
                                        value={formik.values.password}
@@ -65,7 +65,7 @@ const Login = (props)=>{
                                        onChange={formik.handleChange}
                                        onBlur={formik.handleBlur}
                                        placeholder="password" className="form-control form-control-sm"/>
-                                       {formik.errors.password && formik.touched.password && <span>{formik.errors.password}</span>} 
+                                       {formik.errors.password && formik.touched.password && <span style={{color:"red"}}>{formik.errors.password}</span>} 
                                        <br/>
                                 <button type="submit" className="btn btn-sm btn-primary">Login</button>
                                 </div>

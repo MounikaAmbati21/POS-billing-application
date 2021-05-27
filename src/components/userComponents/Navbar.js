@@ -37,7 +37,7 @@ const Navbar = (props)=>{
                         </div>
                     </div>
                 ) : (
-                    <div className="nav justify-content-end">
+                    <div className="nav justify-content-end mt-4">
                     <Link to="/" className="nav-link">Home</Link>
                     <Link to="/register" className="nav-link">Register</Link>
                     <Link to="/login" className="nav-link">Login</Link>

@@ -29,14 +29,14 @@ const UserRegister = (props)=>{
         const validate=Yup.object({
             username : Yup.string()
             .min(5,'Too short')
-            .required('Required'),
+            .required('* required'),
             email : Yup.string().email('Invalid Email').required('Required'),
             password : Yup.string()
             .min(6,'Password is too short,should be minimum 6 characters')
-            .required('Required'),
+            .required('* required'),
             businessName : Yup.string()
-            .required('Required'),
-            address : Yup.string().required('required'),
+            .required('* required'),
+            address : Yup.string().required('* required'),
         })
         return validate
     }
@@ -66,7 +66,7 @@ const UserRegister = (props)=>{
                                         onBlur={formik.handleBlur}
                                         placeholder="Enter your Name"
                                         className="form-control form-control-sm mt-3" /> 
-                                        {formik.touched.username && formik.errors.username && (<span>{formik.errors.username}</span> )} <br/>
+                                        {formik.touched.username && formik.errors.username && (<span style={{color:"red"}}>{formik.errors.username}</span> )} <br/>
 
                                 <Field  type="email"
                                         name="email"
@@ -75,7 +75,7 @@ const UserRegister = (props)=>{
                                         onBlur = {formik.handleBlur}
                                         placeholder="Email"
                                         className="form-control form-control-sm" />
-                                        {formik.errors.email && formik.touched.email &&( <span>{formik.errors.email}</span> )} <br/>
+                                        {formik.errors.email && formik.touched.email &&( <span style={{color:"red"}}>{formik.errors.email}</span> )} <br/>
 
                                 <Field  type="text"
                                         name="password"
@@ -84,7 +84,7 @@ const UserRegister = (props)=>{
                                         onBlur = {formik.handleBlur}
                                         placeholder="password" 
                                         className="form-control form-control-sm"/> 
-                                        {formik.errors.password && formik.touched.password &&( <span>{formik.errors.password}</span> )} <br/>
+                                        {formik.errors.password && formik.touched.password &&( <span style={{color:"red"}}>{formik.errors.password}</span> )} <br/>
 
                                 <Field  type="text"
                                         name="businessName"
@@ -93,7 +93,7 @@ const UserRegister = (props)=>{
                                         onBlur = {formik.handleBlur}
                                         placeholder="business Name"
                                         className="form-control form-control-sm" /> 
-                                        {formik.errors.businessName && formik.touched.businessName &&( <span>{formik.errors.businessName}</span> )} <br/>
+                                        {formik.errors.businessName && formik.touched.businessName &&( <span style={{color:"red"}}>{formik.errors.businessName}</span> )} <br/>
 
                                 <Field  type="text"
                                         name="address"
@@ -102,7 +102,7 @@ const UserRegister = (props)=>{
                                         onBlur = {formik.handleBlur}
                                         placeholder="address"
                                         className="form-control form-control-sm" />
-                                        {formik.errors.address && formik.touched.address &&( <span>{formik.errors.address}</span> )}<br/>
+                                        {formik.errors.address && formik.touched.address &&( <span style={{color:"red"}}>{formik.errors.address}</span> )}<br/>
 
                                 <button type="submit" className="btn btn-sm btn-primary">Register</button>
                                 </div>

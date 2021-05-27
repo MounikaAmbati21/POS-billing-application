@@ -1,0 +1,16 @@
+.container {
+    position: relative;
+    text-align: center;
+    color: black;
+  }
+  .top-right {
+    position: absolute;
+    top: 70px;
+    right: 0px;
+  }  
+  .top-left {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+  }
+    
