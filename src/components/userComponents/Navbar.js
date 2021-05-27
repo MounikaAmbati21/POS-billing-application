@@ -19,11 +19,12 @@ const Navbar = (props)=>{
             {
                 userLoggedIn ? (
                     <div>
-                        <Link to="/dashboard">Dashboard</Link> |
-                        <Link to="/customers">Customers</Link> |
-                        <Link to="/products">Products</Link> |
-                        <Link to="/bills">Billing</Link> |
-                        <Link to="/profile">Profile</Link>
+                        <div className="nav">
+                        <Link to="/dashboard" className="nav-link">Dashboard</Link>
+                        <Link to="/customers" className="nav-link">Customers</Link>
+                        <Link to="/products" className="nav-link">Products</Link>
+                        <Link to="/bills" className="nav-link">Billing</Link>
+                        <Link to="/profile" className="nav-link">Profile</Link>
                         <Link onClick={()=>{
                             const confirm = window.confirm('are you sure?')
                             if(confirm){
@@ -32,13 +33,14 @@ const Navbar = (props)=>{
                             props.history.push('/')
                             }
                             }
-                        }>Logout</Link>
+                        } className="nav-link">Logout</Link>
+                        </div>
                     </div>
                 ) : (
-                    <div>
-                    <Link to="/">Home</Link> |
-                    <Link to="/register">Register</Link> |
-                    <Link to="/login">Login</Link>
+                    <div className="nav justify-content-end">
+                    <Link to="/" className="nav-link">Home</Link>
+                    <Link to="/register" className="nav-link">Register</Link>
+                    <Link to="/login" className="nav-link">Login</Link>
                     </div>
                 )
             }

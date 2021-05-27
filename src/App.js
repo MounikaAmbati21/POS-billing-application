@@ -17,7 +17,7 @@ function App() {
   },[])
 
   return (
-    <div>
+    <div className="container">
       <Navbar userLoggedIn={userLoggedIn} userAuth={userAuth}/>
     </div>
   )

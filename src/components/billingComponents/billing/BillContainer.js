@@ -52,7 +52,7 @@ const BillContainer = (props) => {
                 cart.length > 0 && (
                     <div>
                         <Cart />
-                        <BillMerge />
+                        <BillMerge handleInvoice={handleInvoice}/>
                     </div>
                 )
             }
@@ -75,11 +75,11 @@ const BillContainer = (props) => {
                                 <Modal.Title>Modal Heading</Modal.Title>
                             </Modal.Header> */}
                                 <Modal.Body>
-                                    <Invoice handleToggle={handleToggle} />
+                                    <Invoice handleToggle={handleToggle} className="container" />
                                 </Modal.Body>
-                                <Modal.Footer>
-                                    <Button variant='primary' onClick={handleClose}>Close</Button>
-                                </Modal.Footer>
+                             <Modal.Footer> 
+                                    <Button className='btn btn-sm btn-primary'  onClick={handleClose}>Close</Button>
+                                </Modal.Footer> 
                             </Modal>
                         </div>
                     )

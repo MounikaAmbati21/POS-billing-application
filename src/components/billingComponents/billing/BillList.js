@@ -29,10 +29,10 @@ const BillList=(props)=>{
         }
     }
     return (
-        <div>
-            total no of bills -{billing.length}
-            <table class='table'>
-                <thead class='thead-dark'>
+        <div className='col-md-8'>
+            <h2>Total no. of bills -{billing.length}</h2>
+            <table className='table table-light table-hover '>
+                <thead className='thead-dark'>
                     <tr>
                         <th scope="col">Sl.No</th>
                         <th scope="col">Customer</th>
@@ -45,29 +45,26 @@ const BillList=(props)=>{
                     {billing.map((ele,i)=>{
                         return  <tr key={ele._id}>
                             <td scope="row">{i+1}</td>
-                            {customerData.map((data,_id)=>{
+                            {customerData.map((data)=>{
                                 return (
                                     data._id===ele.customer && (
-                                        <td key={data._id}>{data.name}</td>
+                                        <td key={ele._id}>{data.name}</td>
                                     )
                                 )
                             })}
-                            <td>{ele.customer}</td>
                             <td>{ele.total}</td>
                             <td><button onClick={()=>{
                                 handleInvoice(ele._id)
-                            }} class="btn btn-primary">View</button></td>
+                            }} className="btn btn-primary btn-sm">View</button></td>
 
                             <td><button onClick={()=>{
                                 handleDelete(ele._id)
-                            }} class="btn btn-danger">Delete</button></td>
+                            }} className="btn btn-danger btn-sm">Delete</button></td>
 
                         </tr>
                     })}
-                    
                 </tbody>
             </table> 
-
         </div>
     )
 }

@@ -9,7 +9,7 @@ const Cart=()=>{
     const customerData=useSelector((state)=>{
         return state.details.billCustomerData
     })
-
+console.log(customerData)
     const dispatch=useDispatch()
 
     useEffect(()=>{
@@ -30,7 +30,9 @@ const Cart=()=>{
         return cart.map((ele)=>{
             if(ele.products._id===id){
                 dispatch(getCartItems())
+                if(ele.quantity>0){
                 return (ele.quantity=ele.quantity-1)
+                }
             }
         })
     }
@@ -43,37 +45,36 @@ const Cart=()=>{
     }
 
     return (
-        <div>
-            {/* <h1>{cart.length}</h1> */}
-            <div>
+        <div className='col-md-8'>
+            <h3>Total cart items - {cart.length}</h3>
                 {customerData && <h1> {customerData.name}</h1>}
 
-                <table class='table'>
-                    <thead>
+                <table className='table table-light table-hover'>
+                    <thead className='thead-dark'>
                         <tr>
-                            <th>Sl.No</th>
-                            <th>Product Name</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                            <th></th>
+                            <th scope="col">Sl.No</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                         {cart.map((ele,i)=>{
                             return <tr key={ele.products._id}>
-                                <td>{i+1}</td>
-                                <td>{ele.products.name}</td>
-                                <td> <button onClick={()=>{
+                                <td scope="row">{i+1}</td>
+                                <td scope="row">{ele.products.name}</td>
+                                <td scope="row"> <button onClick={()=>{
                                         decrement(ele.products._id)
-                                        }} class="btn btn-link">-</button>
+                                        }} className="btn btn-outline-primary btn-sm">-</button>
                                                 {ele.quantity}
                                         <button onClick={()=>{
                                             increment(ele.products._id)
-                                        }} class="btn btn-link">+</button></td>
-                                <td>{ele.products.price*ele.quantity}</td>
-                                <td><button onClick={()=>{
+                                        }} className="btn btn-outline-primary btn-sm">+</button></td>
+                                <td scope="row">{ele.products.price*ele.quantity}</td>
+                                <td scope="row"><button onClick={()=>{
                                             handleRemove(ele.products._id)
-                                        }} className="btn btn-primary">
+                                        }} className="btn btn-primary btn-sm mx-sm-3 mb-2">
                                             remove
                                     </button>
                                 </td>
@@ -83,7 +84,6 @@ const Cart=()=>{
                         </tr>
                     </tbody>
                 </table>
-            </div>
         </div>
     )
 }

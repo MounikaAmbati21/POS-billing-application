@@ -41,7 +41,7 @@ const Login = (props)=>{
     }
 
     return (
-        <div>
+        <div className="container col-md-4 mt-3">
             <h2>Login</h2>
             <Formik 
                 initialValues={initialValues}
@@ -50,23 +50,25 @@ const Login = (props)=>{
                     {(formik)=>(
                         <div>
                             <Form>
+                            <div class="form-group">
                                 <Field type="email"
                                        value={formik.values.email}
                                        name="email"
                                        onChange={formik.handleChange}
                                        onBlur={formik.handleBlur}
-                                       placeholder="email" /> <br/>
-                                       {formik.errors.email && formik.touched.email && <span>{formik.errors.email}</span>} <br/>
-                                
+                                       placeholder="email" className="form-control form-control-sm mt-4"/> 
+                                       {formik.errors.email && formik.touched.email && <span>{formik.errors.email}</span>}
+                                       <br/>
                                 <Field type="password"
                                        value={formik.values.password}
                                        name="password"
                                        onChange={formik.handleChange}
                                        onBlur={formik.handleBlur}
-                                       placeholder="password" /> <br/>
-                                       {formik.errors.password && formik.touched.password && <span>{formik.errors.password}</span>} <br/>
-
-                                <button type="submit">Login</button>
+                                       placeholder="password" className="form-control form-control-sm"/>
+                                       {formik.errors.password && formik.touched.password && <span>{formik.errors.password}</span>} 
+                                       <br/>
+                                <button type="submit" className="btn btn-sm btn-primary">Login</button>
+                                </div>
                             </Form>
                         </div>
                     )}

@@ -38,8 +38,7 @@ const CustomerForm = (props) => {
                 onSubmit={onSubmit}>
                 {(formik) => (
                     <div>
-                        <Form>
-
+                        <Form className="form-inline">
                             <Field
                                 type='text'
                                 name='name'
@@ -47,10 +46,11 @@ const CustomerForm = (props) => {
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                                 placeholder='name'
+                                className="form-group mb-2"
                             />
                             {formik.touched.name &&
                                 formik.values.name.length < 5 && (
-                                    formik.errors.name && <div>{formik.errors.name}</div>
+                                    formik.errors.name && <span>{formik.errors.name}</span>
                                 )}
                             <Field
                                 type='text'
@@ -59,9 +59,10 @@ const CustomerForm = (props) => {
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                                 placeholder='mobile'
+                                className="form-group mx-sm-3 mb-2"
                             />
                             {formik.touched.mobile && formik.errors.mobile && (
-                                <div>{formik.errors.mobile}</div>
+                                <span>{formik.errors.mobile}</span>
                             )}
                             <Field
                                 type='text'
@@ -70,12 +71,12 @@ const CustomerForm = (props) => {
                                 value={formik.values.email}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
+                                className="form-group mx-sm-3 mb-2"
                             />
                             {formik.touched.email && formik.errors.email && (
-                                <div>{formik.errors.email}</div>
+                                <span>{formik.errors.email}</span>
                             )}
-                            <br />
-                                <Field type='submit' className="btn btn-primary" value='save' id='save' />
+                                <Field type='submit' className="btn btn-primary btn-sm mb-2" value='save'  />
                         </Form>
                     </div>
                 )}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {useDispatch,useSelector} from 'react-redux'
 import { addToCart, startGetAllProducts} from '../../../actions/billingActions'
+import Select from 'react-select'
 
 const BillProduct=(props)=>{
     const [name,setName]=useState('')
@@ -16,36 +17,35 @@ const BillProduct=(props)=>{
         return state.details.products
     })
 
-    const addProduct=(pName)=>{
-        const productData=products.find((ele)=>{
-            if(pName===ele.name){
-                return ele
-            }
-        })
-        console.log(productData)
-        return productData
-    }
-
-    const handleChange=(e)=>{
-        if(e.target.name==='name'){
-            setName(e.target.value)
-        }
-    }
+    const options=products.map(ele=>({
+        'value' : ele._id,
+        'label' : ele.name
+    }))
 
     const handleBlur=()=>{
-        if(name !== ''){
-            const finalData=addProduct(name)
-            setPrice(finalData.price)
+        if(name!==''){
+            setPrice(productData.price)
         }else{
             setPrice('')
         }
     }
+    const productData=products.find((ele)=>{
+        if(name===ele._id){
+            return ele
+        }
+    })
+
+    // console.log(productData)
+
+    const handleOnChange=(e)=>{
+        setName(e.value)
+    }
+    // console.log(name)
     
     const handleSubmit=(e)=>{
         e.preventDefault()
-        const finalData = addProduct(name)
         const formData={
-            products: finalData,
+            products : productData,
             quantity : 1
         }
         dispatch(addToCart(formData))
@@ -54,45 +54,40 @@ const BillProduct=(props)=>{
     }
 
     return (
-        <div class='container'>
-            <form onSubmit={handleSubmit} class="form-horizontal justify-content-center">
-            <div class="form-group form-group-sm">
-            <div class='form-row'>
-            <div class="col-lg-2 col-lg-offset-6">
-            <input 
-                type='text'
+        <div className="col-md-6">
+            <h3>Add products</h3>
+            <form onSubmit={handleSubmit} >
+            <div className="row">
+    <div className="col">
+            <Select
+                options={options}
+                placeholder='select product'
+                onChange={handleOnChange}
                 name='name'
-                value={name}
-                placeholder='productName'
-                onChange={handleChange}
                 onBlur={handleBlur}
-                class="form-control"
-            />
-            </div>
-                
-            <div class="col-lg-2 col-lg-offset-6">
+                isSearchable
+                className="form-group"
+            /> 
+            </div> 
+            <div className="col">              
             <input 
                 type='text'
                 value={price}
                 placeholder='price'
-                class="form-control"
+                onChange={handleOnChange}
+                className="form-control  mb-2"
             />
             </div>
-
-            <div>
+            <div class="col">
             <input 
                 type='submit'
                 value='Add to Cart'
-                className="btn btn-primary"
+                className="btn btn-primary btn-sm mx-sm-3 mb-2"
             />
             </div>
             </div>
-        </div>                   
      </form>
-     
-     
  </div>
-       
     )
 }
 

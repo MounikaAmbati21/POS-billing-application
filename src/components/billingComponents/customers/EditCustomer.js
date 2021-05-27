@@ -33,16 +33,13 @@ const EditCustomer = (props) => {
     }
 
     return (
-        <div class='container'>
+        <div className="col-md-12">
             <Formik
                 initialValues={initialValues}
                 validationSchema={validateForm()}
                 onSubmit={onSubmit}>
                 {(formik) => (
-                    <Form>
-                        <div class="form-group form-group-sm">
-                            <div class='form-row'>
-                                <div class="col-lg-3 col-lg-offset-4">
+                    <Form className="form-inline">
                                     <Field
                                         type='text'
                                         name='name'
@@ -50,13 +47,11 @@ const EditCustomer = (props) => {
                                         onChange={formik.handleChange}
                                         onBlur={formik.handleBlur}
                                         placeholder='name'
-                                        class="form-control"
+                                        className="form-group mb-2"
                                     />
                                     {formik.touched.name && 
-                                            formik.errors.name && ( <div>{formik.errors.name}</div>
+                                            formik.errors.name && ( <span>{formik.errors.name}</span>
                                         )}
-                                </div>
-                                <div class="col-lg-3 col-lg-offset-4">
                                     <Field
                                         type='text'
                                         name='mobile'
@@ -64,51 +59,35 @@ const EditCustomer = (props) => {
                                         onChange={formik.handleChange}
                                         onBlur={formik.handleBlur}
                                         placeholder='mobile'
-                                        class="form-control"
+                                        className="form-group mx-sm-3 mb-2"
                                     />
                                     {formik.touched.mobile && formik.errors.mobile && (
-                                        <div>{formik.errors.mobile}</div>
+                                        <span>{formik.errors.mobile}</span>
                                     )}
-                                </div>
-                                <div class="col-lg-3 col-lg-offset-4">
                                     <Field
                                         type='text'
                                         name='email'
                                         placeholder='email'
                                         value={formik.values.email}
                                         onChange={formik.handleChange}
-                                        onBlur={formik.handleBlur}
-                                        class="form-control"
+                                        onBlur={formik.handleBlur} className="form-group mx-sm-3 mb-2"
                                     />
                                     {formik.touched.email && formik.errors.email && (
-                                        <div>{formik.errors.email}</div>
+                                        <span>{formik.errors.email}</span>
                                     )}
-                                </div>
-                                <div>
-
-
-                                    <div>
                                         <Field
                                             type='submit'
-                                            className="btn btn-primary"
-                                            value='update'
-                                            id='update'
+                                            value='update'                             className="btn btn-primary btn-sm mb-2"
                                         />
 
                                         <Field
                                             type='submit'
-                                            className="btn btn-primary"
-                                            id='cancel'
                                             value='cancel'
                                             onClick={() => {
                                                 handleToggle(false)
                                                 dispatch(clearCustomerData())
-                                            }}
+                                            }} className="btn btn-danger btn-sm mb-2"
                                         />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </Form>
                 )}
             </Formik>

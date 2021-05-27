@@ -1,18 +1,23 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 import { clearBillCustomerData, startCreateBill , clearCart} from '../../../actions/billingActions'
 
-const BillMerge=()=>{
+const BillMerge=(props)=>{
+    const {handleInvoice} = props
+    const [customerData, setCustomerData] = useState({})
     const dispatch=useDispatch()
 
     const cart=useSelector((state)=>{
         return state.details.cart
     })
 
-
-    const customerData=useSelector((state)=>{
+    const custData=useSelector((state)=>{
         return state.details.billCustomerData
     })
+    useEffect(()=>{
+        setCustomerData(custData)
+    },[])
+    console.log(customerData)
 
     const handleClick=(data=customerData,items=cart)=>{
         const formData={
@@ -25,10 +30,12 @@ const BillMerge=()=>{
                 }
             })
         }
-        console.log('formData',formData)
+        // console.log('formData',formData)
         dispatch(startCreateBill(formData))
         dispatch(clearBillCustomerData())
         dispatch(clearCart())
+        setCustomerData({})
+        //handleInvoice(data._id)
     }
 
     return (

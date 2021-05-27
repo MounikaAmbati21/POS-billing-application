@@ -21,23 +21,31 @@ const CustomerList = (props) => {
     }
 
     return (
-        <div>
-            <input
-                id="search-focus"
-                type="search"
-                id="form1"
-                class="form-control"
-                placeholder='search customers'
-                value={search}
-                onChange={handleSearch} />
-            <table>
-                <thead>
+        <div className="mb-6">
+            <div className="row">
+                <div className="col-md-4">
+                    <h2>Total Customers - {customers.length}</h2>
+                </div>
+                <div className="col-md-4">
+                    <input
+                        id="search-focus"
+                        type="search"
+                        placeholder='search customers'
+                        value={search}
+                        onChange={handleSearch} />
+                </div>
+            </div>
+            <div className="row ">
+                            <div className="col-md-8">
+            <table className='table table-light table-hover'>
+                <thead className='thead-dark'>
                     <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Mobile</th>
-                        <th>Email</th>
-                        <th></th>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Mobile</th>
+                        <th scope="col">Email</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,16 +58,18 @@ const CustomerList = (props) => {
                                     results.map((ele, i) => {
                                         return (
                                             <tr key={ele._id}>
-                                                <td>{i + 1}</td>
-                                                <td>{ele.name[0] + ele.name.slice(1)}</td>
-                                                <td>{ele.mobile}</td>
-                                                <td>{ele.email}</td>
-                                                <td><button onClick={() => {
+                                                <td scope="row">{i + 1}</td>
+                                                <td scope="row">{ele.name[0] + ele.name.slice(1)}</td>
+                                                <td scope="row">{ele.mobile}</td>
+                                                <td scope="row">{ele.email}</td>
+                                                <td scope="row"><button onClick={() => {
                                                     handleEdit(ele._id)
-                                                }}>edit</button>
+                                                }} className="btn btn-primary btn-sm">edit</button>
+                                                </td>
+                                                <td scope="row">
                                                     <button onClick={() => {
                                                         handleRemove(ele._id)
-                                                    }}>remove</button>
+                                                    }} className="btn btn-danger btn-sm">remove</button>
                                                 </td>
                                             </tr>
                                         )
@@ -70,6 +80,8 @@ const CustomerList = (props) => {
                     />
                 </tbody>
             </table>
+            </div>
+            </div>
         </div>
     )
 }

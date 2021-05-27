@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import {useDispatch,useSelector} from 'react-redux'
-import { startGetAllCustomers, billCustomerData } from '../../../actions/billingActions'
-
+import { startGetAllCustomers, billCustomerData  } from '../../../actions/billingActions'
+import Select from 'react-select'
 
 const BillForm=(props)=>{
     const [name,setName]=useState('')
     const [mobile,setMobile]=useState('')
+    const [email,setEmail]=useState('')
 
     const dispatch=useDispatch()
 
@@ -17,69 +18,85 @@ const BillForm=(props)=>{
         dispatch(startGetAllCustomers())
     },[])
 
-    const addData=(number)=>{
-        const customerData=customers.find((ele)=>{
-            if(number === ele.mobile){
-                return ele
-            }
-        })
-        return customerData
-    }
+    const options=customers.map(ele=>({
+        'value' : ele._id,
+        'label' : ele.mobile
+    }))
 
-    const handleChange=(e)=>{
-        if(e.target.name === 'mobile'){
-            setMobile(e.target.value)
-        }
-    }
-
-    const handleBlur=()=>{
-        if(mobile!== ''){
-            const data=addData(mobile)
-            setName(data.name)
+     const handleBlur=()=>{
+         if(mobile!== ''){
+             setName(customerData.name)
+             setEmail(customerData.email)
         }else{
             setName('')
+            setEmail('')
         }
     }
+
+    const customerData=customers.find((ele)=>{
+        if(mobile===ele._id){
+            return ele 
+        }
+    })
+
+    const handleOnChange=(e)=>{
+            setMobile(e.value)
+    }  
 
     const handleSubmit=(e)=>{
         e.preventDefault()
-        const data=addData(mobile)
         const formData={
-            customers : data._id,
-            ...data
+            customers : mobile,
+                ...customerData
         }
-        dispatch(billCustomerData(formData))
         setName('')
-        setMobile('')
+        setEmail('')
+        //  console.log('formData',formData)
+        if(Object.values(customerData).includes('')!== true){
+            dispatch(billCustomerData(formData))
+        }else{
+            alert('Enter the correct mobile number')
+        }
     }
+
     return (
-        <div className='container'>
-            <form onSubmit={handleSubmit} class="form-horizontal justify-content-center">
-                
-            <div class="form-group form-group-sm">
-            <div class='form-row'>
-                
-                <div class="col-lg-3 col-lg-offset-4">
-                <input 
-                    type='text'
-                    value={mobile}
+        <div className="col-md-8">
+            <h3>Add customer details</h3>
+            <form onSubmit={handleSubmit} >
+                <div className="row">
+                <div className="col">
+                <Select 
+                    options={options}
+                    placeholder='select mobile'
+                    onChange={handleOnChange}
                     name='mobile'
-                    placeholder='enter mobile no**'
-                    onChange={handleChange}
                     onBlur={handleBlur}
-                    class="form-control"
-                />
+                    isSearchable
+                    className='form-group'
+                /> 
                 </div>
-                <div class="col-lg-3 col-lg-offset-4">
+                <div className="col">
                 <input 
                     type='text'
                     value={name}
                     name='name'
-                    placeholder='enter customer name'
-                    class="form-control" 
+                    placeholder='customer name'
+                    onChange={handleOnChange} 
+                    className="form-control  mb-2"
                 />
                 </div>
-                <input type='submit' value='Add' className="btn btn-primary" />
+                <div className="col">
+                <input 
+                    type='text'
+                    value={email}
+                    name='email'
+                    placeholder='customer email'
+                    onChange={handleOnChange} 
+                    className="form-control  mb-2"
+                />
+                </div>
+                <div className="col">
+                <input type='submit' value='Add' className="btn btn-primary btn-sm mb-2" />
                 </div>
                 </div>
             </form>

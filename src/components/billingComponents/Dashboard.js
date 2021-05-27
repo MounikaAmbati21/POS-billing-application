@@ -1,24 +1,35 @@
-import React,{useEffect} from 'react'
-import {useSelector, useDispatch} from 'react-redux'
-import { startGetAllBills,startGetAllProducts,startGetAllCustomers } from '../../actions/billingActions'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { startGetAllBills, startGetAllProducts, startGetAllCustomers } from '../../actions/billingActions'
 
-const Dashboard = (props)=>{
-    const {customers , products , bills } = useSelector((state)=>{
+const Dashboard = (props) => {
+    const { customers, products, bills } = useSelector((state) => {
         return state.details
     })
-    const dispatch= useDispatch()
+    const dispatch = useDispatch()
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(startGetAllCustomers())
         dispatch(startGetAllProducts())
         dispatch(startGetAllBills())
-    },[])
+    }, [])
 
     return (
-        <div>
-            <h2>Total Customers - {customers.length}</h2>
-            <h2>Total Products - {products.length}</h2>
-            <h2>Total bill Amount -{bills.length} </h2>
+            <div className="row mt-5">
+                  <div className="col-sm-4">
+                <div className="card">
+                    <div className="card-body">
+                        <h2>Total Customers - {customers.length}</h2>
+                    </div>
+                </div>
+                </div>
+                <div className="col-sm-4">
+                <div className="card">
+                    <div className="card-body">
+                        <h2>Total Products - {products.length}</h2>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

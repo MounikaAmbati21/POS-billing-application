@@ -14,12 +14,18 @@ const UserAccount =(props)=>{
     },[])
 
     return (
-        <div>
-            <h2>Profile</h2>
-            <p>Name - {userData.username}</p>
-            <p>Email - {userData.email}</p>
-            <p>Business Name - {userData.businessName}</p>
-            <p>Address - {userData.address} </p>
+        <div className="col-md-6 mt-5">
+        <div classNameName="card">
+              <div className="card-header">
+            <h3>Profile</h3>
+            <div className="card-body">
+            <h5 className="card-title">Name - {userData.username}</h5>
+            <h5 className="card-text">Email - {userData.email}</h5>
+            <h5 className="card-text">Business Name - {userData.businessName}</h5>
+            <h5 className="card-text">Address - {userData.address} </h5>
+            </div>
+            </div>
+            </div>
         </div>
     )
 }

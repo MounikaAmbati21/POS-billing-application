@@ -48,7 +48,7 @@ const UserRegister = (props)=>{
    }
 
     return (
-        <div>
+        <div className="container col-md-4 mt-3">
             <h3>Register!!!</h3>
             <div>
                 <Formik
@@ -58,47 +58,54 @@ const UserRegister = (props)=>{
                     {(formik)=>(
                         <div>
                             <Form >
+                            <div class="form-group">
                                 <Field type="text"
                                         name="username"
                                         value={formik.values.username}
                                         onChange={formik.handleChange}
                                         onBlur={formik.handleBlur}
-                                        placeholder="Enter your Name" /> <br/>
-                                        {formik.touched.username && formik.errors.username && (<div>{formik.errors.username}</div> )}
+                                        placeholder="Enter your Name"
+                                        className="form-control form-control-sm mt-3" /> 
+                                        {formik.touched.username && formik.errors.username && (<span>{formik.errors.username}</span> )} <br/>
 
                                 <Field  type="email"
                                         name="email"
                                         value={formik.values.email}
                                         onChange = {formik.handleChange}
                                         onBlur = {formik.handleBlur}
-                                        placeholder="Email" /> <br/>
-                                        {formik.errors.email && formik.touched.email &&( <div>{formik.errors.email}</div> )}
+                                        placeholder="Email"
+                                        className="form-control form-control-sm" />
+                                        {formik.errors.email && formik.touched.email &&( <span>{formik.errors.email}</span> )} <br/>
 
                                 <Field  type="text"
                                         name="password"
                                         value={formik.values.password}
                                         onChange = {formik.handleChange}
                                         onBlur = {formik.handleBlur}
-                                        placeholder="password" /> <br/>
-                                        {formik.errors.password && formik.touched.password &&( <div>{formik.errors.password}</div> )}
+                                        placeholder="password" 
+                                        className="form-control form-control-sm"/> 
+                                        {formik.errors.password && formik.touched.password &&( <span>{formik.errors.password}</span> )} <br/>
 
                                 <Field  type="text"
                                         name="businessName"
                                         value={formik.values.businessName}
                                         onChange = {formik.handleChange}
                                         onBlur = {formik.handleBlur}
-                                        placeholder="business Name" /> <br/>
-                                        {formik.errors.businessName && formik.touched.businessName &&( <div>{formik.errors.businessName}</div> )}
+                                        placeholder="business Name"
+                                        className="form-control form-control-sm" /> 
+                                        {formik.errors.businessName && formik.touched.businessName &&( <span>{formik.errors.businessName}</span> )} <br/>
 
                                 <Field  type="text"
                                         name="address"
                                         value={formik.values.address}
                                         onChange = {formik.handleChange}
                                         onBlur = {formik.handleBlur}
-                                        placeholder="address" /> <br/>
-                                        {formik.errors.address && formik.touched.address &&( <div>{formik.errors.address}</div> )}
+                                        placeholder="address"
+                                        className="form-control form-control-sm" />
+                                        {formik.errors.address && formik.touched.address &&( <span>{formik.errors.address}</span> )}<br/>
 
-                                <button type="submit" >Register</button>
+                                <button type="submit" className="btn btn-sm btn-primary">Register</button>
+                                </div>
                             </Form>
                         </div>
                     )

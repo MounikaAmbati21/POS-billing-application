@@ -46,6 +46,7 @@ const Customers =(props)=>{
                     </div>
                 )
             }
+            <hr/>
             {
                 customers.length === 0 ? (
                     <div>
@@ -53,7 +54,6 @@ const Customers =(props)=>{
                     </div>
                 ) : (
                     <div>
-                        <h2>Total Customers - {customers.length}</h2>
                         <CustomerList customers={customers} handleEdit={handleEdit}/>
                     </div>
                 )

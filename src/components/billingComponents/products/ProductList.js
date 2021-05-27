@@ -27,22 +27,32 @@ const ProductsList = (props)=>{
     }
 
     return (
-        <div>
+        <div className="mb-3">
             {products.length===0? (
                 <h2>No Products Added</h2>
             ) : (
-                <div>
+                <div className="mb-6">
+                    <div className="row">
+                    <div className="col-md-4">
                     <h2>List of Products</h2>
+                    </div>
+                    <div className="col-md-4">
                     <input  type="search" 
                             placeholder='search products' 
                             value={search}
                             onChange={handleSearch}/>
-                    <table>
-                        <thead>
+                            </div>
+                            </div>
+                            <div className="row ">
+                            <div className="col-md-8">
+                    <table className='table table-light table-hover'>
+                        <thead className='thead-dark'> 
                             <tr>
-                                <th>sl.no</th>
-                                <th>name</th>
-                                <th>price</th>
+                                <th scope="col">Sl.No</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -53,17 +63,19 @@ const ProductsList = (props)=>{
                                 <>
                                     {results.map((data,i)=>(
                                             <tr key={data._id} >
-                                                <td>{i+1}</td>
-                                                <td>{data.name[0].toUpperCase()+data.name.slice(1)}</td>
-                                                <td>{data.price}</td>
-                                                <td><button onClick={()=>{
+                                                <td scope="row">{i+1}</td>
+                                                <td scope="row">{data.name[0].toUpperCase()+data.name.slice(1)}</td>
+                                                <td scope="row">{data.price}</td>
+                                                <td scope="row"><button onClick={()=>{
                                                     handleEdit(data._id)
-                                                    }} >edit</button></td>
-                                                <td><button 
+                                                    }} className="btn btn-primary btn-sm"
+                                                    >edit</button></td>
+                                                <td scope="row"><button 
                                                     onClick={()=>{
                                                     handleProductRemove(data._id)
                                                     }}
-                                                    >delete</button></td>
+                                                    className="btn btn-danger btn-sm"
+                                                    >remove</button></td>
                                             </tr>
                                         ))
                                     }
@@ -72,6 +84,8 @@ const ProductsList = (props)=>{
                         />
                         </tbody>
                     </table>
+                    </div>
+                    </div>
                 </div>
             )}
         </div>
