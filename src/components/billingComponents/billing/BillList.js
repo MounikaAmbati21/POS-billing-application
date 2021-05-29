@@ -1,26 +1,26 @@
 import React, { useEffect } from 'react'
-import {useDispatch,useSelector} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { startDeleteBill, startGetAllBills } from '../../../actions/billingActions'
 
-const BillList=(props)=>{
-    const {handleInvoice}=props
-    const dispatch=useDispatch()
+const BillList = (props) => {
+    const { handleInvoice } = props
+    const dispatch = useDispatch()
 
-   const billing=useSelector((state)=>{
+    const billing = useSelector((state) => {
         return state.details.bills
-   })
-
-    const customerData=useSelector((state)=>{
-        return  state.details.customers
     })
 
-    useEffect(()=>{
-        dispatch(startGetAllBills())
-    },[])
+    const customerData = useSelector((state) => {
+        return state.details.customers
+    })
 
-    const handleDelete=(id)=>{
-        const confirm=window.confirm('Are you sure')
-        if(confirm){
+    useEffect(() => {
+        dispatch(startGetAllBills())
+    }, [])
+
+    const handleDelete = (id) => {
+        const confirm = window.confirm('Are you sure')
+        if (confirm) {
             dispatch(startDeleteBill(id))
         }
     }
@@ -38,29 +38,29 @@ const BillList=(props)=>{
                     </tr>
                 </thead>
                 <tbody>
-                    {billing.map((ele,i)=>{
-                        return  <tr key={ele._id}>
-                            <td scope="row">{i+1}</td>
-                            {customerData.map((data)=>{
+                    {billing.map((ele, i) => {
+                        return <tr key={ele._id}>
+                            <td scope="row">{i + 1}</td>
+                            {customerData.map((data) => {
                                 return (
-                                    data._id===ele.customer && (
+                                    data._id === ele.customer && (
                                         <td key={ele._id}>{data.name}</td>
                                     )
                                 )
                             })}
                             <td>{ele.total}</td>
-                            <td><button onClick={()=>{
+                            <td><button onClick={() => {
                                 handleInvoice(ele._id)
                             }} className="btn btn-primary btn-sm">View</button></td>
 
-                            <td><button onClick={()=>{
+                            <td><button onClick={() => {
                                 handleDelete(ele._id)
                             }} className="btn btn-danger btn-sm">Delete</button></td>
 
                         </tr>
                     })}
                 </tbody>
-            </table> 
+            </table>
         </div>
     )
 }

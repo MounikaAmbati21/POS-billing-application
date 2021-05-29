@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { startGetAllBills } from '../../actions/billingActions'
-import _ from 'lodash'
 import moment from 'moment'
 import {
 	ComposedChart,

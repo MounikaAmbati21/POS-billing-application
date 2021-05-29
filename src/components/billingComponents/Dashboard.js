@@ -23,46 +23,46 @@ const Dashboard = (props) => {
 
     return (
         <div className="row mt-4">
-                            <div className="col-sm-6">
-            <div className="row mt-3">
-                <div className="col-sm-8">
-                    <div className="card border border-dark rounded">
-                        <div className="card-body">
-                            <h2>Total Customers - {customers.length}</h2>
-                        </div>
-                    </div>
-                </div>
+            <div className="col-sm-6">
                 <div className="row mt-3">
                     <div className="col-sm-8">
                         <div className="card border border-dark rounded">
                             <div className="card-body">
-                                <h2>Total Products - {products.length}</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="row mt-3">
-                    <div className="col-sm-8">
-                        <div className="card border border-dark rounded">
-                            <div className="card-body">
-                                <h2>Total Orders - {bills.length}</h2>
+                                <h2>Total Customers - {customers.length}</h2>
                             </div>
                         </div>
                     </div>
                     <div className="row mt-3">
-                        <div className="col-sm-10">
+                        <div className="col-sm-8">
                             <div className="card border border-dark rounded">
-                                <div className="card-body ">
-                                    <h2>Total Bill Amount - {totalAmount()}</h2>
+                                <div className="card-body">
+                                    <h2>Total Products - {products.length}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row mt-3">
+                        <div className="col-sm-8">
+                            <div className="card border border-dark rounded">
+                                <div className="card-body">
+                                    <h2>Total Orders - {bills.length}</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row mt-3">
+                            <div className="col-sm-10">
+                                <div className="card border border-dark rounded">
+                                    <div className="card-body ">
+                                        <h2>Total Bill Amount - {totalAmount()}</h2>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
             <div className="col-sm-6">
-            <BillChart />
+                <BillChart />
             </div>
         </div>
     )
