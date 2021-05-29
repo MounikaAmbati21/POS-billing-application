@@ -8,6 +8,7 @@ import { startGetSingleBill, startGetAllBills } from '../../../actions/billingAc
 import { useDispatch, useSelector } from 'react-redux'
 import Invoice from './Invoice'
 import { Modal, Button } from 'react-bootstrap'
+import ViewBillData from './ViewBillData'
 
 const BillContainer = (props) => {
     const [toggle, setToggle] = useState(false)
@@ -75,7 +76,8 @@ const BillContainer = (props) => {
                                 <Modal.Title>Modal Heading</Modal.Title>
                             </Modal.Header> */}
                                 <Modal.Body>
-                                    <Invoice handleToggle={handleToggle} className="container" />
+                                    {/* <Invoice handleToggle={handleToggle} className="container" /> */}
+                                    <ViewBillData className="container" billData={billData}/>
                                 </Modal.Body>
                              <Modal.Footer> 
                                     <Button className='btn btn-sm btn-primary'  onClick={handleClose}>Close</Button>
