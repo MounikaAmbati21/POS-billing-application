@@ -34,15 +34,16 @@ const BillMerge=(props)=>{
         dispatch(startCreateBill(formData))
         dispatch(clearBillCustomerData())
         dispatch(clearCart())
+        handleInvoice(data._id)
         setCustomerData({})
-        //handleInvoice(data._id)
+        // handleInvoice(data.customers)
     }
 
     return (
-        <div>
+        <div  className="col-md-2">
             <button onClick={()=>{
                 handleClick(customerData,cart)
-            }} className="btn btn-primary">Generate</button>
+            }} className="btn btn-primary">Generate Bill</button>
         </div>
     )
 }

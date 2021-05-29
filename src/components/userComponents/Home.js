@@ -14,7 +14,7 @@ const Home = () => {
                 <div class="top-right">
                         <div className="card-body">
                             <h5 className="card-title">Dummy credentials for testing</h5>
-                            <h6 className="card-subtitle mb-2 text-muted">Email : client123@gmail.com</h6>
+                            <h6 className="card-subtitle mb-2 text-muted">Email : mouni@gmail.com</h6>
                             <h6 className="card-subtitle mb-2 text-muted">Password : secret123</h6>
                         </div>
                     </div>

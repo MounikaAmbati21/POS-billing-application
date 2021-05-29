@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import {useDispatch,useSelector} from 'react-redux'
 import { startDeleteBill, startGetAllBills } from '../../../actions/billingActions'
-import Invoice from './Invoice'
 
 const BillList=(props)=>{
     const {handleInvoice}=props
@@ -14,9 +13,6 @@ const BillList=(props)=>{
     const customerData=useSelector((state)=>{
         return  state.details.customers
     })
-    // const productData=useSelector((state)=>{
-    //    return  state.details.products
-    // })
 
     useEffect(()=>{
         dispatch(startGetAllBills())
@@ -29,8 +25,8 @@ const BillList=(props)=>{
         }
     }
     return (
-        <div className='col-md-8'>
-            <h2>Total no. of bills -{billing.length}</h2>
+        <div className='col-md-10'>
+            <h2 className="col-md-4 mb-2">Total no. of bills -{billing.length}</h2>
             <table className='table table-light table-hover '>
                 <thead className='thead-dark'>
                     <tr>

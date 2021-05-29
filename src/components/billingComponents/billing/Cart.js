@@ -30,7 +30,7 @@ console.log(customerData)
         return cart.map((ele)=>{
             if(ele.products._id===id){
                 dispatch(getCartItems())
-                if(ele.quantity>0){
+                if(ele.quantity>1){
                 return (ele.quantity=ele.quantity-1)
                 }
             }
@@ -45,10 +45,10 @@ console.log(customerData)
     }
 
     return (
-        <div className='col-md-8'>
-            <h3>Total cart items - {cart.length}</h3>
+        <div className='col-md-12'>
+            <h3 className="col-md-3 mt-3">Total cart items - {cart.length}</h3>
                 {customerData && <h1> {customerData.name}</h1>}
-
+                <div className="col-md-10">
                 <table className='table table-light table-hover'>
                     <thead className='thead-dark'>
                         <tr>
@@ -62,17 +62,17 @@ console.log(customerData)
                     <tbody>
                         {cart.map((ele,i)=>{
                             return <tr key={ele.products._id}>
-                                <td scope="row">{i+1}</td>
-                                <td scope="row">{ele.products.name}</td>
-                                <td scope="row"> <button onClick={()=>{
+                                <td>{i+1}</td>
+                                <td>{ele.products.name}</td>
+                                <td> <button onClick={()=>{
                                         decrement(ele.products._id)
                                         }} className="btn btn-outline-primary btn-sm">-</button>
                                                 {ele.quantity}
                                         <button onClick={()=>{
                                             increment(ele.products._id)
                                         }} className="btn btn-outline-primary btn-sm">+</button></td>
-                                <td scope="row">{ele.products.price*ele.quantity}</td>
-                                <td scope="row"><button onClick={()=>{
+                                <td>{ele.products.price*ele.quantity}</td>
+                                <td><button onClick={()=>{
                                             handleRemove(ele.products._id)
                                         }} className="btn btn-primary btn-sm mx-sm-3 mb-2">
                                             remove
@@ -84,6 +84,7 @@ console.log(customerData)
                         </tr>
                     </tbody>
                 </table>
+                </div>
         </div>
     )
 }

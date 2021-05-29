@@ -25,11 +25,11 @@ const ProductsContainer =(props)=>{
     }
 
     return (
-        <div>
+        <div className="col-md-12 mb-2"> 
             {
                 toggle &&  Object.keys(productData).length > 0 ? (
-                    <div>
-                        <h1> Update Product Details</h1>
+                    <div className="col-md-6">
+                        <h1 className="col-md-10"> Update Product Details</h1>
                         <EditProduct
                             toggle={toggle}
                             handleToggle={handleToggle}
@@ -37,13 +37,15 @@ const ProductsContainer =(props)=>{
                         />
                     </div>
                 ) : (
-                    <div>
-                        <h1>Add Product</h1>
+                    <div className="col-md-5"> 
+                        <h1 className="col-md-6">Add Product</h1>
                         <ProductForm />
                     </div>
                 )
             } <hr/>
+            <div className="col-md-12">
             <ProductsList handleEdit={handleEdit} />
+            </div>
         </div>
     )
 }

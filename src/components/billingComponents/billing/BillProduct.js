@@ -54,11 +54,11 @@ const BillProduct=(props)=>{
     }
 
     return (
-        <div className="col-md-6">
-            <h3>Add products</h3>
+        <div className="col-md-8">
+            <h3 className="col-md-3">Add products</h3>
             <form onSubmit={handleSubmit} >
             <div className="row">
-    <div className="col">
+    <div className="col-md-4">
             <Select
                 options={options}
                 placeholder='select product'
@@ -69,16 +69,17 @@ const BillProduct=(props)=>{
                 className="form-group"
             /> 
             </div> 
-            <div className="col">              
+            <div className="col-md-2">              
             <input 
                 type='text'
                 value={price}
                 placeholder='price'
                 onChange={handleOnChange}
                 className="form-control  mb-2"
+                disabled={true}
             />
             </div>
-            <div class="col">
+            <div class="col-md-1">
             <input 
                 type='submit'
                 value='Add to Cart'

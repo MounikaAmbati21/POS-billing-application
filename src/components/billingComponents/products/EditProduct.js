@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import { startUpdateProductData, clearProductData } from '../../../actions/billingActions'
 
 const EditProduct = (props) => {
-    const { toggle, handleToggle, name, price, _id } = props
+    const { handleToggle, name, price, _id } = props
 
     const initialValues = {
         name: name,
@@ -55,7 +55,7 @@ const EditProduct = (props) => {
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             name='price'
-                            className="form-group mx-sm-3 mb-2"
+                            className="form-group mx-sm-4 mb-2"
                         />
                         {formik.touched.price && (
                             formik.errors.price && <span>{formik.errors.price}</span>

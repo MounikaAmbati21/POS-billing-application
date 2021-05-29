@@ -44,20 +44,20 @@ const BillContainer = (props) => {
     }
 
     return (
-        <div>
-            <h1>Billing</h1>
-            <BillForm />
-            <BillProduct />
+        <div className="col-md-12">
+            <h1 className="col-md-1">Billing</h1>
+            <BillForm className="col-md-12"/>
+            <BillProduct className="col-md-12"/>
             {
                 cart.length > 0 && (
-                    <div>
+                    <div className="col-md-12">
                         <Cart />
                         <BillMerge handleInvoice={handleInvoice}/>
                     </div>
                 )
             }
             <hr />
-            <div>
+            <div className="col-md-12">
                 {
                     bills.length > 0 ? (
                         <BillList handleInvoice={handleInvoice} />

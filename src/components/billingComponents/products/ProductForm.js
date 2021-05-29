@@ -5,7 +5,6 @@ import * as Yup from 'yup'
 import { startAddProductData } from '../../../actions/billingActions'
 
 const ProductForm = (props) => {
-    const { toggle, handleToggle, _id, name, price } = props
     const dispatch = useDispatch()
 
     const initialValues = {
@@ -50,7 +49,7 @@ const ProductForm = (props) => {
                                     value={formik.values.price}
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
-                                    className="form-group mx-sm-3 mb-2"
+                                    className="form-group mx-sm-4 mb-2"
                                 />
                             {formik.touched.price && formik.errors.price && <span>{formik.errors.price}</span>}
                                 <Field

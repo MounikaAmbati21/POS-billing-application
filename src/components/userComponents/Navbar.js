@@ -19,7 +19,7 @@ const Navbar = (props)=>{
             {
                 userLoggedIn ? (
                     <div>
-                        <div className="nav">
+                        <div className="nav justify-content-end mt-4">
                         <Link to="/dashboard" className="nav-link">Dashboard</Link>
                         <Link to="/customers" className="nav-link">Customers</Link>
                         <Link to="/products" className="nav-link">Products</Link>

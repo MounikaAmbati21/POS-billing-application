@@ -24,9 +24,9 @@ const CustomerList = (props) => {
         <div className="mb-6">
             <div className="row">
                 <div className="col-md-4">
-                    <h2>Total Customers - {customers.length}</h2>
+                    <h2 className="col-md-10">Total Customers - {customers.length}</h2>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 mt-1 dark">
                     <input
                         id="search-focus"
                         type="search"
@@ -36,7 +36,7 @@ const CustomerList = (props) => {
                 </div>
             </div>
             <div className="row ">
-                            <div className="col-md-8">
+                            <div className="col-md-10 mt-3">
             <table className='table table-light table-hover'>
                 <thead className='thead-dark'>
                     <tr>
@@ -58,15 +58,15 @@ const CustomerList = (props) => {
                                     results.map((ele, i) => {
                                         return (
                                             <tr key={ele._id}>
-                                                <td scope="row">{i + 1}</td>
-                                                <td scope="row">{ele.name[0] + ele.name.slice(1)}</td>
-                                                <td scope="row">{ele.mobile}</td>
-                                                <td scope="row">{ele.email}</td>
-                                                <td scope="row"><button onClick={() => {
+                                                <td >{i + 1}</td>
+                                                <td >{ele.name[0] + ele.name.slice(1)}</td>
+                                                <td >{ele.mobile}</td>
+                                                <td >{ele.email}</td>
+                                                <td ><button onClick={() => {
                                                     handleEdit(ele._id)
                                                 }} className="btn btn-primary btn-sm">edit</button>
                                                 </td>
-                                                <td scope="row">
+                                                <td >
                                                     <button onClick={() => {
                                                         handleRemove(ele._id)
                                                     }} className="btn btn-danger btn-sm">remove</button>

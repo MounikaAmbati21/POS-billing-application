@@ -60,11 +60,11 @@ const BillForm=(props)=>{
     }
 
     return (
-        <div className="col-md-8">
-            <h3>Add customer details</h3>
+        <div className="col-md-12 mb-2">
+            <h3 className="col-md-3">Add customer details</h3>
             <form onSubmit={handleSubmit} >
                 <div className="row">
-                <div className="col">
+                <div className="col-md-2">
                 <Select 
                     options={options}
                     placeholder='select mobile'
@@ -75,7 +75,7 @@ const BillForm=(props)=>{
                     className='form-group'
                 /> 
                 </div>
-                <div className="col">
+                <div className="col-md-3">
                 <input 
                     type='text'
                     value={name}
@@ -83,9 +83,10 @@ const BillForm=(props)=>{
                     placeholder='customer name'
                     onChange={handleOnChange} 
                     className="form-control  mb-2"
+                    disabled={true}
                 />
                 </div>
-                <div className="col">
+                <div className="col-md-3">
                 <input 
                     type='text'
                     value={email}
@@ -93,9 +94,10 @@ const BillForm=(props)=>{
                     placeholder='customer email'
                     onChange={handleOnChange} 
                     className="form-control  mb-2"
+                    disabled={true}
                 />
                 </div>
-                <div className="col">
+                <div className="col-md-1">
                 <input type='submit' value='Add' className="btn btn-primary btn-sm mb-2" />
                 </div>
                 </div>

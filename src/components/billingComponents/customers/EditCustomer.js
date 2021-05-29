@@ -1,7 +1,7 @@
 import React from 'react'
 import { Formik, Field, Form } from 'formik'
 import * as Yup from 'yup'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { clearCustomerData, startUpdateCustomer } from '../../../actions/billingActions'
 
 const EditCustomer = (props) => {

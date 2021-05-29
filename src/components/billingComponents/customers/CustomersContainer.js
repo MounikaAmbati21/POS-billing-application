@@ -30,18 +30,18 @@ const Customers =(props)=>{
     }
 
     return (
-        <div>
+        <div className="col-md-12 mb-2">
             {
                 toggle && Object.keys(customerData).length > 0 ? (
-                    <div>
-                       <h2>Update Customer Details</h2>
+                    <div className="col-md-8">
+                       <h2 className="col-md-6 mt-3">Update Customer Details</h2>
                        <EditCustomer {...customerData} 
                                       handleToggle={handleToggle}
                             />
                     </div>
                 ) : (
-                    <div>
-                       <h2>Add Customer</h2>
+                    <div className="col-md-8">
+                       <h2 className="col-md-4">Add Customer</h2>
                        <CustomerForm />
                     </div>
                 )
@@ -49,11 +49,11 @@ const Customers =(props)=>{
             <hr/>
             {
                 customers.length === 0 ? (
-                    <div>
+                    <div className="col-md-12">
                     <h4>No Customers found</h4>
                     </div>
                 ) : (
-                    <div>
+                    <div className="col-md-12">
                         <CustomerList customers={customers} handleEdit={handleEdit}/>
                     </div>
                 )

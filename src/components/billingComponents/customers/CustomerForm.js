@@ -31,7 +31,7 @@ const CustomerForm = (props) => {
     }
 
     return (
-        <div>
+        <div className="col-md-12 mb-2">
             <Formik
                 initialValues={initialValues}
                 validationSchema={validateForm()}

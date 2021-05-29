@@ -5,8 +5,10 @@
   }
   .top-right {
     position: absolute;
-    top: 70px;
+    top: 250px;
     right: 0px;
+    text-align: right;
+    margin-left: 200px;
   }  
   .top-left {
     position: absolute;
