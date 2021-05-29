@@ -3,11 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { startGetAllProducts, startGetAllCustomers } from '../../../actions/billingActions'
 
 const ViewBillData = (props) => {
-    const {billData} = props
+    const { billData } = props
     const dispatch = useDispatch()
-    // const billData = useSelector((state) => {
-    //     return state.details.singleBill
-    // })
 
     const customer = useSelector((state) => {
         return state.details.customers
@@ -32,18 +29,18 @@ const ViewBillData = (props) => {
     return (
         <div className="col-md-12">
             <h1>Customer Details</h1>
-                    <div className="row">
-                        <p>Name : <strong>{customerName.name}</strong></p>
-                    </div>
-                    <div className="row">
-                        <span>Invoice No. :<strong>{billData._id}</strong></span>
-                    </div>
-                    <div className="row ">
-                        <span>Payment Date : <strong>{billData.date.slice(0, 10)}</strong></span>
-                    </div>
-                    <div className="row">
-                        <span>Bill Amount : <strong>{billData.total}/-</strong></span>
-                    </div>
+            <div className="row">
+                <p>Name : <strong>{customerName.name}</strong></p>
+            </div>
+            <div className="row">
+                <span>Invoice No. :<strong>{billData._id}</strong></span>
+            </div>
+            <div className="row ">
+                <span>Payment Date : <strong>{billData.date.slice(0, 10)}</strong></span>
+            </div>
+            <div className="row">
+                <span>Bill Amount : <strong>{billData.total}/-</strong></span>
+            </div>
             <div>
                 <table className='table' border='2'>
                     <thead className='thead-light'>
