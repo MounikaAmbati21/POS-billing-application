@@ -40,7 +40,7 @@ const Invoice = (props) => {
 
     const handleInvoiceDownload = () => {
         var opt = {
-            margin: 0,
+            margin: 1,
             html2canvas: { scale: 3 },
             jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' },
         }
@@ -52,9 +52,28 @@ const Invoice = (props) => {
     }
 
     return (
-        <div class="col-md-12">
+        <div id="invoice" class="col-md-12">
+                        <button
+                style={{ marginLeft: '20%' }}
+                variant='contained'
+                color='danger'
+                align='right'
+                onClick={() => {
+                    handleToggle(false)
+                }}>
+                &times;
+						</button>
+            <button
+                onClick={handleInvoiceDownload}
+                variant='contained'
+                style={{
+                    backgroundColor: 'green',
+                    color: 'white',
+                    marginBottom: '1em',
+                }}>
+                Download
+						</button>
             <div class="row">
-
                 <div class="receipt-main ">
                     <div class="row">
                         <div class="col-md-6">
@@ -140,26 +159,6 @@ const Invoice = (props) => {
                     </div>
                 </div>
             </div>
-            <button
-                style={{ marginLeft: '20%' }}
-                variant='contained'
-                color='danger'
-                align='right'
-                onClick={() => {
-                    handleToggle(false)
-                }}>
-                &times;
-						</button>
-            <button
-                onClick={handleInvoiceDownload}
-                variant='contained'
-                style={{
-                    backgroundColor: 'green',
-                    color: 'white',
-                    marginBottom: '1em',
-                }}>
-                Download
-						</button>
         </div>
     )
 

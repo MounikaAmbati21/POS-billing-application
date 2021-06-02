@@ -70,11 +70,11 @@ const BillContainer = (props) => {
                             <Modal show={toggle} onHide={handleClose} animation={false}>
                                 <Modal.Body>
                                     <Invoice handleToggle={handleToggle} className="container" billData={billData} />
-                                    <ViewBillData billData={billData} />
+                                    {/* <ViewBillData billData={billData} /> */}
                                 </Modal.Body>
-                                <Modal.Footer>
+                                {/* <Modal.Footer>
                                     <Button className='btn btn-sm btn-primary' onClick={handleClose}>Close</Button>
-                                </Modal.Footer>
+                                </Modal.Footer> */}
                             </Modal>
                         </div>
                     )
